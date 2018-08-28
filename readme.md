@@ -6,3 +6,4 @@
 ### 6. 编写Spark SQL程序实现RDD转化为DataFrame，利用structtype直接指定schema
 ### 7. 编写Spark SQL程序操作HiveSql
 ### 8. 编写SparkSql从MySQL中加载数据
+### 9. 编写SparkSql将数据写入到MySQL中
