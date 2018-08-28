@@ -63,6 +63,12 @@ object SparkSqlToMysql {
     //ignore:忽略（它表示只要当前表存在，它就不会进行任何操作）
     //ErrorIfExists:只要表存在就报错（默认选项）
     resultDF.write.mode("overwrite").jdbc("jdbc:mysql://node1:3306/spark","student",properties)
+    //打成jar包时的提交脚本
+    /*
+    * spark-submit --master spark://node1:7077 --class com.abyss.spark.sql.SparkSqlToMysql --executor-memory 1g --
+    * total-executor-cores 2 --jars /export/server/hive/lib/mysql-connector-java-5.1.35.jar --driver-class-path
+    * /export/server/hive/lib/mysql-connector-java-5.1.35.jar original-spark-2.0.jar /people.txt aa
+    * */
 
     //关闭
     sc.stop()
