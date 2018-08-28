@@ -10,7 +10,7 @@ object TopN {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("UV").setMaster("local[2]")
     val sc = new SparkContext(conf)
-    val result = sc.textFile("/Users/abyss/Dev/Demos/spark-wordcount/access.log")
+    val result = sc.textFile("./data/access.log")
       //每行进行切分
       .map(_.split(" "))
       //滤去丢失字段和空的url的数据

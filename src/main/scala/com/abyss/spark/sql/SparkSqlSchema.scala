@@ -21,7 +21,7 @@ object SparkSqlSchema {
     //设置日志级别
     sc.setLogLevel("WARN")
     //3.通过sparkContext读取数据文件
-    val dataRDD = sc.textFile("/Users/abyss/Dev/toys/people.txt")
+    val dataRDD = sc.textFile("./data/people.txt")
     //4.切分每一行
     val lineArrayRDD = dataRDD.map(_.split(","))
     //5.可以将lineArrayRDD和样例类Person向关联

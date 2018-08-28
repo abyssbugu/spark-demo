@@ -10,7 +10,7 @@ object UV {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("UV").setMaster("local[2]")
     val sc = new SparkContext(conf)
-    val uv = sc.textFile("/Users/abyss/Dev/Demos/spark-wordcount/access.log")
+    val uv = sc.textFile("./data/access.log")
       //获取ip地址集
       .map(_.split(" ")(0))
       //根据ip地址去重

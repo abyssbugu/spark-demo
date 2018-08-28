@@ -78,14 +78,14 @@ object IPLocation {
     val sc = new SparkContext(conf)
     sc.setLogLevel("WARN")
     //1. 读取基站城市经纬度信息
-    val city_ip_rdd: RDD[(String, String, String, String)] = sc.textFile("/Users/abyss/Dev/Demos/spark-wordcount/ip.txt")
+    val city_ip_rdd: RDD[(String, String, String, String)] = sc.textFile("./data/ip.txt")
       //切分每一行数据，获取ipStart,ipEnd，经度，维度
       .map(_.split("\\|")).map(x => (x(2), x(3), x(13), x(14)))
     //2. 将城市ip信息广播到每一个worker节点
     val cityIpBroadcast = sc.broadcast(city_ip_rdd.collect())
 
     //3. 获取日志数据,获取所有ip地址
-    val ips: RDD[String] = sc.textFile("/Users/abyss/Dev/Demos/spark-wordcount/20090121000132.394251.http.format").map(_.split("\\|")(1))
+    val ips: RDD[String] = sc.textFile("./data/20090121000132.394251.http.format").map(_.split("\\|")(1))
     //4. 将ip地址转化成long，然后通过二分查询去基站数据中匹配，获取到对应的经度和纬度
     val result: RDD[((String, String), Int)] = ips.mapPartitions(iter => {
       //获取广播变量中的值
