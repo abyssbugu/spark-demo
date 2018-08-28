@@ -51,7 +51,7 @@ object IPLocation {
 
   }
 
-  def data2mysql(iter: Iterator[((String, String), Int)]) = {
+  def data2mysql(iter: Iterator[((String, String), Int)]): Unit = {
     //定义数据库连接
     var conn:Connection=null
     //定义PreparedStatement
